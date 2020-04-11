@@ -28,6 +28,9 @@ public class SintomaDAO {
 				sintoma.setLabel(rs.getString("label_sintoma"));
 				sintomas.add(sintoma);
 			}
+			rs.close();
+			stmt.close();
+			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

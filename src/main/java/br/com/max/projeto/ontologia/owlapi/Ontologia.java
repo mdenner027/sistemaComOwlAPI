@@ -1,6 +1,6 @@
 package br.com.max.projeto.ontologia.owlapi;
 
-import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +24,7 @@ import org.semanticweb.owlapi.reasoner.InferenceType;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
+import br.com.max.projeto.ontologia.bd.OntologiaDAO;
 import br.com.max.projeto.ontologia.modelo.Caso;
 import br.com.max.projeto.ontologia.modelo.Comorbidade;
 import br.com.max.projeto.ontologia.modelo.Transtorno;
@@ -33,8 +34,8 @@ public class Ontologia {
 
 	public Caso inferirDados(String[] sintoma, String[] situacao, int tempo) throws OWLOntologyCreationException {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new File(
-				"C:\\Users\\maxde\\eclipse-workspace\\Ontologia\\src\\main\\java\\br\\com\\max\\projeto\\ontologia\\owlapi\\ontologia.owl"));
+		InputStream in = new OntologiaDAO().getOntologia();
+		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(in);
 		OWLDataFactory df = ontology.getOWLOntologyManager().getOWLDataFactory();
 		OWLObjectProperty hasSymptom = df.getOWLObjectProperty(prefix + "has_symptom");
 		OWLObjectProperty hasSituation = df.getOWLObjectProperty(prefix + "has_situation");

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 	public Connection getConnection() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			return DriverManager.getConnection("jdbc:mysql://localhost:3306/tcc", "root", "");
+			Class.forName("org.postgresql.Driver");
+			return DriverManager.getConnection("jdbc:postgresql://localhost:5432/tcc", "postgres", "postgres");
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		} catch (SQLException e) {

@@ -26,9 +26,15 @@ public class HomeController {
 	public String home(Model model) {
 		model.addAttribute("sintomas", new SintomaDAO().getSintomas());
 		model.addAttribute("situacoes", new SituacaoDAO().getSituacoes());
-		return "cadastro";
+		return "dashboard";
 	}
 
+	@RequestMapping(value = "inicio")
+	public String inicio() {
+		
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value = "analisar", method = RequestMethod.POST)
 	public String analisar(String[] sintomas, String[] situacoes, int tempo, Model model) {
 		System.out.println(Arrays.toString(sintomas));
@@ -47,7 +53,11 @@ public class HomeController {
 		//System.out.println(caso.getTranstornos().get(0).getLabel());
 		model.addAttribute("transtornos", transtornos);
 		model.addAttribute("comorbidades", comorbidadades);
-		return "resultados";
+		return "results";
 	}
 
+	@RequestMapping(value="dashboard")
+	public String dashboard() {
+		return "dashboard";
+	}
 }

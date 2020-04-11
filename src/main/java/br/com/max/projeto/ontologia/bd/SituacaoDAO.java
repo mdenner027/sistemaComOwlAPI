@@ -28,6 +28,9 @@ public class SituacaoDAO {
 				situacao.setLabel(rs.getString("label_situacao"));
 				situacoes.add(situacao);
 			}
+			rs.close();
+			stmt.close();
+			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

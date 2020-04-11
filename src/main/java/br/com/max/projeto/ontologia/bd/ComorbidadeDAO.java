@@ -17,18 +17,26 @@ public class ComorbidadeDAO {
 		connection = new ConnectionFactory().getConnection();
 	}
 
-	public List<Comorbidade> getLabelsComorbidade(List<Comorbidade> c) throws SQLException {
+	public List<Comorbidade> getLabelsComorbidade(List<Comorbidade> c) {
 		List<Comorbidade> comorbidades = new ArrayList<Comorbidade>();
-		for (int i = 0; i < c.size(); i++) {
-			PreparedStatement stmt = connection
-					.prepareStatement("select * from comorbidades where iri_comorbidade = ?");
-			stmt.setString(1, c.get(i).getIri());
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				Comorbidade comorbidade = new Comorbidade();
-				comorbidade.setLabel(rs.getString("label_comorbidade"));
-				comorbidades.add(comorbidade);
+		try {
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			for (int i = 0; i < c.size(); i++) {
+				stmt = connection.prepareStatement("select * from comorbidades where iri_comorbidade = ?");
+				stmt.setString(1, c.get(i).getIri());
+				rs = stmt.executeQuery();
+				while (rs.next()) {
+					Comorbidade comorbidade = new Comorbidade();
+					comorbidade.setLabel(rs.getString("label_comorbidade"));
+					comorbidades.add(comorbidade);
+				}
 			}
+			rs.close();
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
 		if (comorbidades.size() > 1) {

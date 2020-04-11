@@ -19,18 +19,21 @@ public class TranstornoDAO {
 
 	public List<Transtorno> getLabelsTranstorno(List<Transtorno> t) throws SQLException {
 		List<Transtorno> transtornos = new ArrayList<Transtorno>();
-
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
 		for (int i = 0; i < t.size(); i++) {
-			PreparedStatement stmt = connection
-					.prepareStatement("select * from tipospaciente where iri_tipo_paciente = ?");
+			stmt = connection.prepareStatement("select * from tipospaciente where iri_tipo_paciente = ?");
 			stmt.setString(1, t.get(i).getIri());
-			ResultSet rs = stmt.executeQuery();
+			rs = stmt.executeQuery();
 			while (rs.next()) {
 				Transtorno transtorno = new Transtorno();
 				transtorno.setLabel(rs.getString("label_tipo_paciente"));
 				transtornos.add(transtorno);
 			}
 		}
+		rs.close();
+		stmt.close();
+		connection.close();
 		Collections.sort(transtornos);
 		return transtornos;
 	}
