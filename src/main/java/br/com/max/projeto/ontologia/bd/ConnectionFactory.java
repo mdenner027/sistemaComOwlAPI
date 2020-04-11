@@ -11,7 +11,7 @@ public class ConnectionFactory {
 		String pass = "f17de2e6db5a5f7cde274ca9f56fbd4a26ad615afdb07605863c61d18e408848";
 		try {
 			Class.forName("org.postgresql.Driver");
-			return DriverManager.getConnection("jdbc:postgresql://",user, pass);
+			return DriverManager.getConnection(url,user, pass);
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		} catch (SQLException e) {
