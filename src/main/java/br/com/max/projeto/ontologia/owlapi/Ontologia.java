@@ -80,8 +80,8 @@ public class Ontologia {
 		Set<OWLClass> pacienteComorbidades = r.getTypes(df.getOWLNamedIndividual(prefix + "comorbidade"), false)
 				.getFlattened();
 
-		List<Transtorno> transtornos = new ArrayList<>();
-		List<Comorbidade> comorbidades = new ArrayList<>();
+		List<Transtorno> transtornos = new ArrayList<Transtorno>();
+		List<Comorbidade> comorbidades = new ArrayList<Comorbidade>();
 
 		for (OWLClass cls : pacienteTranstornos) {
 			Transtorno t = new Transtorno();

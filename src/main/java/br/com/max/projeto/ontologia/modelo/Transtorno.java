@@ -5,7 +5,7 @@ public class Transtorno implements Comparable<Transtorno>{
 	private String iri;
 	private String label;
 
-	@Override
+	
 	public int compareTo(Transtorno o1) {
 		// TODO Auto-generated method stub
 		return this.label.compareTo(o1.label);

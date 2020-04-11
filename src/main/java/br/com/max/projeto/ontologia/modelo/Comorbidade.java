@@ -4,7 +4,6 @@ public class Comorbidade implements Comparable<Comorbidade> {
 	private String iri;
 	private String label;
 
-	@Override
 	public int compareTo(Comorbidade o) {
 		// TODO Auto-generated method stub
 		return this.label.compareTo(o.label);

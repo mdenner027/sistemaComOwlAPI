@@ -46,7 +46,10 @@ public class HomeController {
 			caso = new Ontologia().inferirDados(sintomas, situacoes, tempo);
 			transtornos = new TranstornoDAO().getLabelsTranstorno(caso.getTranstornos());
 			comorbidadades = new ComorbidadeDAO().getLabelsComorbidade(caso.getComorbidades());
-		} catch (SQLException | OWLOntologyCreationException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OWLOntologyCreationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
