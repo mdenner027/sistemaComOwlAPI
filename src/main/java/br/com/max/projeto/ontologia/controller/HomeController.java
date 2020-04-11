@@ -55,9 +55,4 @@ public class HomeController {
 		model.addAttribute("comorbidades", comorbidadades);
 		return "results";
 	}
-
-	@RequestMapping(value="dashboard")
-	public String dashboard() {
-		return "dashboard";
-	}
 }
