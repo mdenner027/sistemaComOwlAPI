@@ -9,10 +9,7 @@ public class ConnectionFactory {
 		try {
 			Class.forName("org.postgresql.Driver");
 			return DriverManager.getConnection("jdbc:postgresql://localhost:5432/tcc", "postgres", "postgres");
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(e);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (ClassNotFoundException | SQLException e) {
 			throw new RuntimeException(e);
 		}
 
