@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 	public Connection getConnection() {
-		String url="jdbc:postgresql://ec2-34-193-232-231.compute-1.amazonaws.com:5432/d26h4e9k8an93o";
-		String user = "iqotyfuolprwdb";
-		String pass = "f17de2e6db5a5f7cde274ca9f56fbd4a26ad615afdb07605863c61d18e408848";
+		String url="jdbc:postgresql://ec2-54-210-128-153.compute-1.amazonaws.com:5432/d94apk39ffi4bu";
+		String user = "lyfzrnrvijunkj";
+		String pass = "dea1f02d87aa2fcf119130ac3d8fc8831466ecfbcb78c8da9c56b211801f9357";
 		try {
 			Class.forName("org.postgresql.Driver");
 			return DriverManager.getConnection(url,user, pass);
